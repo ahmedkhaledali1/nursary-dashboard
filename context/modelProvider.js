@@ -35,7 +35,7 @@ const ModalProvider = ({ children }) => {
 
   const staffs = [
     { name: 'Ahmed', image: '/sidebar/logo.png' },
-    { name: 'Tarek', image: '/Sidebar/logo.png' },
+    { name: 'Tarek', image: '/sidebar/logo.png' },
   ];
   const childrens = [
     { name: 'body', image: '/sidebar/logo.png' },
@@ -47,7 +47,7 @@ const ModalProvider = ({ children }) => {
     {
       name: 'New Room',
       capacity: 20,
-      image: '/Sidebar/logo.png',
+      image: '/sidebar/logo.png',
       children: [
         { name: 'body', image: '/sidebar/logo.png' },
         { name: 'mohamed', image: '/sidebar/logo.png' },

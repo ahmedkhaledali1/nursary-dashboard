@@ -10,7 +10,7 @@ function Card({ name }) {
             width={80}
             height={80}
             className="rounded-full"
-            src={`/Sidebar/logo.png`}
+            src={`/sidebar/logo.png`}
             alt="commment photo"
           />
           <div className="flex flex-col ">
