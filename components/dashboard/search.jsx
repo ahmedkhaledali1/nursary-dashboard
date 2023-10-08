@@ -38,9 +38,8 @@ export const SearchBar = ({
         value={input}
         onFocus={() => setIsFocused(true)}
         onChange={(e) => handleChange(e.target.value)}
-        // onKeyDown={handleKeyDown}
       />
-      {(input !== '') & (isFocused == true) && (
+      {input !== '' && isFocused == true && (
         <div
           className={`  w-full z-50   max-h-[400px] 
                            flex flex-col   absolute
