@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.blue-text {
+  color: #225c8b;
+}
+
+.blue-bg {
+  background-color: #225c8b;
+}
+.modal-enter {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.modal-enter-active {
+  opacity: 1;
+}
+
+.modal-exit {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+.modal-exit-active {
+  opacity: 0;
+}
