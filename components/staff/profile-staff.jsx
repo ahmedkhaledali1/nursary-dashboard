@@ -1,11 +1,16 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { SearchBar } from '../rooms/search';
 import { AiOutlineClose, AiOutlinePlus } from 'react-icons/ai';
+import ModalContext from '@/context/ModelContext';
+import InviteStaff from './invite-staff';
 
 function ProfileStaff({ selectedStaff, childrens, staffs }) {
   const defaultValues = {
     name: selectedStaff.name,
+    lastName: selectedStaff.lastName,
+    email: selectedStaff.email,
+    contactNumber: selectedStaff.contactNumber,
   };
   const [assignStaff, setAssignStaff] = useState([]);
   const [assignChildren, setAssignChildren] = useState([]);
@@ -30,14 +35,21 @@ function ProfileStaff({ selectedStaff, childrens, staffs }) {
     // setAssignStaff(selectedRoom.staff.map((staff) => staff.name));
     setForm(defaultValues);
   }, [selectedStaff]);
-  // console.log(childrens);
+  const { openModal } = useContext(ModalContext);
+
+  const handleOpenModal = (e) => {
+    e.preventDefault();
+    const modalContent = <InviteStaff />;
+    openModal(modalContent);
+  };
   return (
-    <div className="p-6 text-[#01233f]">
-      <div className="h-[70vh] w-[30rem] border rounded-xl p-4">
-        <h1 className="font-semibold text-xl"> Staff Details</h1>
+    <div className="p-6 flex flex-col gap-4 text-[#01233f]">
+      <div className="h-fit w-[30rem] border rounded-xl p-4">
+        <h1 className="font-semibold text-xl">Basic Information</h1>
+
         <form className="p-3 flex flex-col gap-5">
-          <div className="flex gap-5">
-            <div className=" w-[70%] flex flex-col gap-1">
+          <div className="flex flex-col gap-5">
+            <div className=" w-full flex flex-col gap-1">
               <label htmlFor="name">Name</label>
               <input
                 name="name"
@@ -48,72 +60,101 @@ function ProfileStaff({ selectedStaff, childrens, staffs }) {
                 className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
               />
             </div>
-            {/* <div className=" w-[30%] flex flex-col gap-1">
-              <label htmlFor="capacity">capacity</label>
+            <div className=" w-full flex flex-col gap-1">
+              <label htmlFor="lastName">Last Name</label>
               <input
-                name="capacity"
-                value={form.capacity}
+                name="lastName"
+                value={form.lastName}
                 onChange={onChange}
-                id="capacity"
+                id="lastName"
                 type="text"
                 className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
               />
-            </div> */}
+            </div>
+            <div className=" w-full flex flex-col gap-1">
+              <label htmlFor="email">email</label>
+              <input
+                name="email"
+                value={form.email}
+                onChange={onChange}
+                id="email"
+                type="email"
+                className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
+              />
+            </div>
+            <div className=" w-full flex flex-col gap-1">
+              <label htmlFor="contactNumber">Contact Number</label>
+              <input
+                name="contactNumber"
+                value={form.contactNumber}
+                onChange={onChange}
+                id="contactNumber"
+                type="date"
+                className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
+              />
+            </div>
           </div>
-          {/* <div className=" w-full flex flex-col gap-1">
-            <label htmlFor="capacity">Assign Staff</label>
-            <div className="flex items-center gap-2">
-              {
-                <SearchBar
-                  assign={assignStaff}
-                  setAssign={setAssignStaff}
-                  searchingArray={staffs.map((room) => room.name)}
-                  noIcon
-                />
-              }
-              <AiOutlinePlus size={40} />
+        </form>
+      </div>
+      <div className="h-fit w-[30rem] border rounded-xl p-4">
+        <h1 className="font-semibold text-xl">Setting Information</h1>
+        <form className="p-3 flex flex-col gap-5">
+          <div className="flex flex-col gap-5">
+            <div className=" w-full flex flex-col gap-1">
+              <label htmlFor="name">Room(s)</label>
+              <input
+                type="text"
+                className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
+              />
             </div>
-          </div> */}
-          {/* {assignStaff.length > 0 && (
-            <div className="border-2 text-xs p-2 text-gray-50 text-w w-full flex gap-2">
-              {assignStaff.map((name, index) => (
-                <div
-                  key={index}
-                  className=" flex gap-[3px] p-1 items-center bg-[#01233f] rounded-full"
-                >
-                  <div>{name}</div>
-                  <AiOutlineClose onClick={() => RemoveStaff(name)} />
-                </div>
-              ))}
+          </div>
+        </form>
+      </div>
+      <div className="h-fit w-[30rem] border rounded-xl p-4">
+        <div className=" w-full flex flex-col gap-1">
+          <label className="font-semibold text-xl">Key Children</label>
+          <div className="flex items-center gap-2">
+            {
+              <SearchBar
+                assign={assignChildren}
+                setAssign={setAssignChildren}
+                searchingArray={childrens.map((room) => room.name)}
+                noIcon
+              />
+            }
+          </div>
+        </div>
+        {assignChildren.length > 0 && (
+          <div className="border-2 text-xs p-2 text-gray-50 text-w w-full flex gap-2">
+            {assignChildren.map((name, index) => (
+              <div
+                key={index}
+                className=" flex gap-[3px] p-1 items-center bg-[#01233f] rounded-full"
+              >
+                <div>{name}</div>
+                <AiOutlineClose onClick={() => RemoveChild(name)} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="h-fit w-[30rem] border rounded-xl p-4">
+        <div className="flex justify-between p-3">
+          <h1 className="font-semibold text-xl">Account</h1>
+          <h1 className="text-gray-500">Not Signed Up</h1>
+        </div>
+
+        <form className="p-3 flex flex-col gap-5">
+          <div className="flex flex-col gap-5">
+            <div className=" w-full flex flex-col gap-1">
+              <button
+                onClick={handleOpenModal}
+                className="w-full p-3 font-medium rounded-lg bg-gray-100 hover:bg-gray-300"
+              >
+                Invite
+              </button>
             </div>
-          )} */}
-          {/* <div className=" w-full flex flex-col gap-1">
-            <label htmlFor="capacity">Assign Children</label>
-            <div className="flex items-center gap-2">
-              {
-                <SearchBar
-                  assign={assignChildren}
-                  setAssign={setAssignChildren}
-                  searchingArray={childrens.map((room) => room.name)}
-                  noIcon
-                />
-              }
-              <AiOutlinePlus size={40} />
-            </div>
-          </div> */}
-          {/* {assignChildren.length > 0 && (
-            <div className="border-2 text-xs p-2 text-gray-50 text-w w-full flex gap-2">
-              {assignChildren.map((name, index) => (
-                <div
-                  key={index}
-                  className=" flex gap-[3px] p-1 items-center bg-[#01233f] rounded-full"
-                >
-                  <div>{name}</div>
-                  <AiOutlineClose onClick={() => RemoveChild(name)} />
-                </div>
-              ))}
-            </div>
-          )} */}
+          </div>
         </form>
       </div>
     </div>

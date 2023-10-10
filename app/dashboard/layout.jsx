@@ -17,15 +17,17 @@ export default function Layout({ children }) {
     setShpowSidebar(!showSidebar);
   };
   return (
-    <main className=" relative min-h-screen m-0 ">
-      <button
+    <main className="flex min-h-screen m-0 ">
+      {/* <button
         onClick={handleSidebar}
         className="absolute top-8 left-6 z-20 text-blue blue-text hover:text-cyan-400 font-bold cursor-pointer"
       >
         <BsReverseListColumnsReverse size={40} />
-      </button>
-      {showSidebar && <Sidebar handleShows={handleSidebar} />}
-      <div>{children}</div>
+      </button> */}
+      <div className="w-[13rem]">
+        <Sidebar handleShows={handleSidebar} />
+      </div>
+      <div className="flex-grow">{children}</div>
     </main>
   );
 }

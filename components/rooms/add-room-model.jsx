@@ -1,3 +1,4 @@
+'use client';
 import React, { useContext, useState } from 'react';
 import { AiOutlineClose, AiOutlinePlus } from 'react-icons/ai';
 import { SearchBar } from './search';

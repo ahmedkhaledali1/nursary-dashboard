@@ -24,11 +24,9 @@ function ChildrenScreen() {
   console.log(childrens);
   return (
     <div className="w-full flex  h-screen">
-      <div className="w-[30%] border-r p-10">
-        <div className="flex items-start pl-10 text-[#01233f] text-lg gap-3 border-b h-[4rem]">
-          <h1 className="font-semibold text-3xl ml-4 text-[#01233f]">
-            Activity
-          </h1>
+      <div className="w-[30%] border-r ">
+        <div className="flex items-start p-5 text-[#01233f] text-lg gap-3 border-b h-[4rem]">
+          <h1 className="font-semibold text-xl text-[#01233f]">Activity</h1>
         </div>
         <div
           onClick={() => {
@@ -44,7 +42,7 @@ function ChildrenScreen() {
                 width={50}
                 height={50}
                 className="rounded-full"
-                src={'/Sidebar/logo.png'}
+                src={'/sidebar/logo.png'}
                 alt="commment photo"
               />
               <div className="flex flex-col ">
@@ -71,7 +69,7 @@ function ChildrenScreen() {
                 width={50}
                 height={50}
                 className="rounded-full"
-                src={'/Sidebar/logo.png'}
+                src={'/sidebar/logo.png'}
                 alt="commment photo"
               />
               <div className="flex flex-col ">
@@ -98,7 +96,7 @@ function ChildrenScreen() {
                 width={50}
                 height={50}
                 className="rounded-full"
-                src={'/Sidebar/logo.png'}
+                src={'/sidebar/logo.png'}
                 alt="commment photo"
               />
               <div className="flex flex-col ">
@@ -125,7 +123,7 @@ function ChildrenScreen() {
                 width={50}
                 height={50}
                 className="rounded-full"
-                src={'/Sidebar/logo.png'}
+                src={'/sidebar/logo.png'}
                 alt="commment photo"
               />
               <div className="flex flex-col ">

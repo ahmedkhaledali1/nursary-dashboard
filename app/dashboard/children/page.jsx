@@ -6,9 +6,11 @@ import React, { useContext, useState } from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
 import AddChildModel from '@/components/children/add-child-model';
 import ModalContext from '@/context/ModelContext';
-import ChildrenRoom from '@/components/rooms/children-room';
-import StaffRoom from '@/components/rooms/staff-room';
+
 import ProfileChiled from '@/components/children/profile-child';
+import ChildFeed from '@/components/children/child-feed';
+import Bookings from '@/components/children/bookings';
+import LearningJourney from '@/components/children/learning-journey';
 function ChildrenScreen() {
   const [selectedChild, setselectedChild] = useState({});
   const { isOpen, openModal, closeModal, childrens, staffs, rooms } =
@@ -24,20 +26,20 @@ function ChildrenScreen() {
   const [selectedsection, setSelectedSection] = useState('profile');
   console.log(childrens);
   return (
-    <div className="w-full flex  h-screen">
-      <div className="w-[30%] border-r p-10">
-        <div className="flex items-start pl-10 text-[#01233f] text-lg gap-3 border-b h-[4rem]">
+    <div className="w-full flex h-screen">
+      <div className="w-[25%] border-r ">
+        <div className="flex font-medium items-center  text-[#01233f] text-xl gap-3 p-5 border-b h-[4rem]">
           <button onClick={handleOpenModal}>
             <AiOutlinePlus size={35} />
           </button>
 
           <div>Add Child</div>
         </div>
-        <div className="h-[7rem] border-b flex justify-center items-center w-full">
-          <div className="h-[3rem]">
+        <div className="h-[6rem] border-b flex justify-center items-center w-full">
+          <div className="h-[2.5rem]">
             <SearchBar
               setselectedChild={setselectedChild}
-              inputClass={' w-[350px]'}
+              inputClass={' w-[90%]'}
               searchingArray={childrens.map((room) => room.name)}
             />
           </div>
@@ -73,13 +75,13 @@ function ChildrenScreen() {
           </div>
         ))}
       </div>
-      <div className="w-[70%]">
+      <div className="w-[75%]">
         {!selectedChild.name ? (
-          <div className="w-full  h-full flex justify-center items-center text-center font-semibold text-xl text-gray-500">
+          <div className="w-full  h-screen overflow-y-auto flex justify-center items-center text-center font-semibold text-xl text-gray-500">
             No Child selected
           </div>
         ) : (
-          <div className="w-full  h-full">
+          <div className="w-full  h-screen overflow-y-auto">
             <div className={`h-[10rem] p-6  border-b `}>
               <div className=" py-8   w-full ">
                 <div className="flex gap-3">
@@ -111,10 +113,40 @@ function ChildrenScreen() {
                   >
                     profile
                   </button>
+                  <button
+                    onClick={() => setSelectedSection('feed')}
+                    className={` px-2  ${
+                      selectedsection === 'feed'
+                        ? 'border-b-4 py-2 font-semibold border-b-sky-700'
+                        : ''
+                    }`}
+                  >
+                    Feed
+                  </button>
+                  <button
+                    onClick={() => setSelectedSection('bookings')}
+                    className={` px-2  ${
+                      selectedsection === 'bookings'
+                        ? 'border-b-4 py-2 font-semibold border-b-sky-700'
+                        : ''
+                    }`}
+                  >
+                    Bookings
+                  </button>
+                  <button
+                    onClick={() => setSelectedSection('learningJourney')}
+                    className={` px-2  ${
+                      selectedsection === 'learningJourney'
+                        ? 'border-b-4 py-2 font-semibold border-b-sky-700'
+                        : ''
+                    }`}
+                  >
+                    Learning Journey
+                  </button>
                 </div>
               </div>
             </div>
-            <div>
+            <div className="h-[67vh]">
               {selectedsection === 'profile' && (
                 <ProfileChiled
                   staffs={staffs}
@@ -122,6 +154,9 @@ function ChildrenScreen() {
                   selectedChild={selectedChild}
                 />
               )}
+              {selectedsection === 'feed' && <ChildFeed />}
+              {selectedsection === 'bookings' && <Bookings />}
+              {selectedsection === 'learningJourney' && <LearningJourney />}
             </div>
           </div>
         )}

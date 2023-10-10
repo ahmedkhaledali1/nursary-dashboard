@@ -34,14 +34,50 @@ const ModalProvider = ({ children }) => {
   }, [isOpen]);
 
   const staffs = [
-    { name: 'Ahmed', image: '/sidebar/logo.png' },
-    { name: 'Tarek', image: '/sidebar/logo.png' },
+    {
+      name: 'Ahmed',
+      lastName: 'said',
+      image: '/sidebar/logo.png',
+      email: 'aka@gmail.com',
+      contactNumber: '012101001',
+    },
+    {
+      name: 'Tarek',
+      lastName: 'said',
+      image: '/sidebar/logo.png',
+      email: 'aka@gmail.com',
+      contactNumber: '012101001',
+    },
   ];
   const childrens = [
-    { name: 'body', image: '/sidebar/logo.png' },
-    { name: 'mohamed', image: '/sidebar/logo.png' },
-    { name: 'mohsen', image: '/sidebar/logo.png' },
-    { name: 'said', image: '/sidebar/logo.png' },
+    {
+      name: 'body',
+      lastName: 'Tarek',
+      sex: 'male',
+      birthDay: '1/2/2002',
+      image: '/sidebar/logo.png',
+    },
+    {
+      name: 'mohamed',
+      lastName: 'Tarek',
+      sex: 'male',
+      birthDay: '1/2/2002',
+      image: '/sidebar/logo.png',
+    },
+    {
+      name: 'mohsen',
+      lastName: 'Tarek',
+      sex: 'male',
+      birthDay: '1/2/2002',
+      image: '/sidebar/logo.png',
+    },
+    {
+      name: 'said',
+      lastName: 'Tarek',
+      sex: 'male',
+      birthDay: '1/2/2002',
+      image: '/sidebar/logo.png',
+    },
   ];
   const rooms = [
     {

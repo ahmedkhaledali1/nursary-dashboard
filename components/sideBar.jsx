@@ -62,12 +62,12 @@ function Sidebar({ handleShows }) {
   return (
     <>
       <div
-        className={`flex flex-col  w-[16rem] overflow-y-auto scroll-smooth fixed top-0 max-h-screen 
+        className={`flex flex-col  w-[13rem] overflow-y-auto scroll-smooth  h-screen 
         blue-bg text-gray-200 font-medium sidetable z-40
                `}
       >
         <div className={`flex flex-col w-full  `}>
-          <div className="flex justify-between p-4">
+          {/* <div className="flex justify-between p-4">
             <div className="px-4 text-2xl flex gap-5">
               <Image
                 width={40}
@@ -83,8 +83,8 @@ function Sidebar({ handleShows }) {
             >
               <BsReverseListColumnsReverse size={40} />
             </div>
-          </div>
-          <div className="w-full flex items-center gap-4 px-2 my-2">
+          </div> */}
+          <div className="w-full flex items-center gap-4 px-2 mt-3 my-2">
             <div className="w-[4rem] rounded-full boder-[#022542]  h-[4rem] border-4 bg-gray-600 flex items-center justify-center ">
               TF
             </div>

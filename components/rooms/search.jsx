@@ -68,7 +68,7 @@ export const SearchBar = ({
           onFocus={() => setIsFocused(true)}
           //
         />
-        {(input != '') & (isFocused == true) && (
+        {input != '' && isFocused == true && (
           <div
             className={`  w-full z-50   max-h-[400px] 
                            flex flex-col   absolute

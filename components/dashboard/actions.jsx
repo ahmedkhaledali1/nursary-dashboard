@@ -21,7 +21,7 @@ function Actions() {
 
   const ActionIcon = ({ icon, content, onClick }) => {
     return (
-      <div className="bg-gray-100 text-gray-500 flex flex-col items-center justify-center rounded gap-1">
+      <div className="bg-gray-100 text-gray-500 flex flex-col items-center justify-center rounded-lg py-2 px-1 gap-1">
         {icon}
         <div>{content}</div>
       </div>
@@ -39,7 +39,7 @@ function Actions() {
   };
 
   return (
-    <div className="h-fit py-3 w-full flex flex-col rounded-xl  ">
+    <div className="h-fit py-3 w-full flex flex-col rounded-xl px-3 ">
       <div className="my-3 pb-3 rounded-lg shadow">
         <div className="flex p-1 px-2 justify-between border ">
           <div className="flex gap-1 text-[#01233f]">

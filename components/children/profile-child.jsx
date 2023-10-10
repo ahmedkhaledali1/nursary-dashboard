@@ -6,6 +6,9 @@ import { AiOutlineClose, AiOutlinePlus } from 'react-icons/ai';
 function ProfileChiled({ selectedChild, childrens, staffs }) {
   const defaultValues = {
     name: selectedChild.name,
+    lastName: selectedChild.lastName,
+    sex: selectedChild.sex,
+    birthDay: selectedChild.birthDay,
   };
   const [assignStaff, setAssignStaff] = useState([]);
   const [assignChildren, setAssignChildren] = useState([]);
@@ -32,12 +35,12 @@ function ProfileChiled({ selectedChild, childrens, staffs }) {
   }, [selectedChild]);
   // console.log(childrens);
   return (
-    <div className="p-6 text-[#01233f]">
-      <div className="h-[70vh] w-[30rem] border rounded-xl p-4">
-        <h1 className="font-semibold text-xl"> Child Details</h1>
+    <div className="p-6 flex flex-col gap-4 text-[#01233f]">
+      <div className="h-fit w-[30rem] border rounded-xl p-4">
+        <h1 className="font-semibold text-xl">Basic Information</h1>
         <form className="p-3 flex flex-col gap-5">
-          <div className="flex gap-5">
-            <div className=" w-[70%] flex flex-col gap-1">
+          <div className="flex flex-col gap-5">
+            <div className=" w-full flex flex-col gap-1">
               <label htmlFor="name">Name</label>
               <input
                 name="name"
@@ -48,72 +51,117 @@ function ProfileChiled({ selectedChild, childrens, staffs }) {
                 className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
               />
             </div>
-            {/* <div className=" w-[30%] flex flex-col gap-1">
-              <label htmlFor="capacity">capacity</label>
+            <div className=" w-full flex flex-col gap-1">
+              <label htmlFor="lastName">Last Name</label>
               <input
-                name="capacity"
-                value={form.capacity}
+                name="lastName"
+                value={form.lastName}
                 onChange={onChange}
-                id="capacity"
+                id="lastName"
                 type="text"
                 className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
               />
-            </div> */}
+            </div>
+            <div className=" w-full flex flex-col gap-1">
+              <label htmlFor="sex">Sex</label>
+              <input
+                name="sex"
+                value={form.sex}
+                onChange={onChange}
+                id="sex"
+                type="text"
+                className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
+              />
+            </div>
+            <div className=" w-full flex flex-col gap-1">
+              <label htmlFor="birthDay">Birth Day</label>
+              <input
+                name="birthDay"
+                value={form.birthDay}
+                onChange={onChange}
+                id="birthDay"
+                type="date"
+                className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
+              />
+            </div>
           </div>
-          {/* <div className=" w-full flex flex-col gap-1">
-            <label htmlFor="capacity">Assign Staff</label>
-            <div className="flex items-center gap-2">
-              {
-                <SearchBar
-                  assign={assignStaff}
-                  setAssign={setAssignStaff}
-                  searchingArray={staffs.map((room) => room.name)}
-                  noIcon
-                />
-              }
-              <AiOutlinePlus size={40} />
+        </form>
+      </div>
+      <div className="h-fit  w-[30rem] border rounded-xl p-4">
+        <h1 className="font-semibold text-xl">Other Information</h1>
+        <form className="p-3 flex flex-col gap-5">
+          <div className="flex flex-col gap-5">
+            <div className=" w-full flex flex-col gap-1">
+              <label htmlFor="name">Allergies</label>
+              <textarea
+                type="text"
+                className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
+              />
             </div>
-          </div> */}
-          {/* {assignStaff.length > 0 && (
-            <div className="border-2 text-xs p-2 text-gray-50 text-w w-full flex gap-2">
-              {assignStaff.map((name, index) => (
-                <div
-                  key={index}
-                  className=" flex gap-[3px] p-1 items-center bg-[#01233f] rounded-full"
-                >
-                  <div>{name}</div>
-                  <AiOutlineClose onClick={() => RemoveStaff(name)} />
-                </div>
-              ))}
+            <div className=" w-full flex flex-col gap-1">
+              <label htmlFor="name">Medication</label>
+              <textarea
+                type="text"
+                className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
+              />
             </div>
-          )} */}
-          {/* <div className=" w-full flex flex-col gap-1">
-            <label htmlFor="capacity">Assign Children</label>
-            <div className="flex items-center gap-2">
-              {
-                <SearchBar
-                  assign={assignChildren}
-                  setAssign={setAssignChildren}
-                  searchingArray={childrens.map((room) => room.name)}
-                  noIcon
-                />
-              }
-              <AiOutlinePlus size={40} />
+            <div className=" w-full flex flex-col gap-1">
+              <label htmlFor="name">Dietary</label>
+              <textarea
+                type="text"
+                className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
+              />
             </div>
-          </div> */}
-          {/* {assignChildren.length > 0 && (
-            <div className="border-2 text-xs p-2 text-gray-50 text-w w-full flex gap-2">
-              {assignChildren.map((name, index) => (
-                <div
-                  key={index}
-                  className=" flex gap-[3px] p-1 items-center bg-[#01233f] rounded-full"
-                >
-                  <div>{name}</div>
-                  <AiOutlineClose onClick={() => RemoveChild(name)} />
-                </div>
-              ))}
+            <div className=" w-full flex flex-col gap-1">
+              <label htmlFor="name">Safe Passphrase</label>
+              <textarea
+                type="text"
+                className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
+              />
             </div>
-          )} */}
+            <div className=" w-full flex flex-col gap-1">
+              <label htmlFor="name">Notes</label>
+              <textarea
+                type="text"
+                className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div className="h-fit w-[30rem] border rounded-xl p-4">
+        <h1 className="font-semibold text-xl">Funding Reference Numbers</h1>
+        <form className="p-3 flex flex-col gap-5">
+          <div className="flex flex-col gap-5">
+            <div className=" w-full flex flex-col gap-1">
+              <label htmlFor="name">Extended Hours Ref Number</label>
+              <input
+                type="text"
+                className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
+              />
+            </div>
+            <div className=" w-full flex flex-col gap-1">
+              <label htmlFor="name">Two Year Old Ref Number</label>
+              <input
+                type="text"
+                className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div className="h-fit w-[30rem] border rounded-xl p-4">
+        <h1 className="font-semibold text-xl">Funding Reference Numbers</h1>
+        <form className="p-3 flex flex-col gap-5">
+          <div className="flex flex-col gap-5">
+            <div className=" w-full flex flex-col gap-1">
+              <label htmlFor="name">Main Room</label>
+              <input
+                type="text"
+                className="border w-full outline-none hover:outline-none p-1 px-3 text-lg"
+              />
+            </div>
+          </div>
         </form>
       </div>
     </div>

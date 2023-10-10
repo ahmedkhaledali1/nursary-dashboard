@@ -3,8 +3,8 @@ import React from 'react';
 
 function Card({ name }) {
   return (
-    <div className="h-[15rem] p-6 rounded-xl bg-gray-200">
-      <div className="border-b-2 pb-8 border-gray-300 border- w-full ">
+    <div className="h-[12rem] p-6 rounded-xl bg-gray-200">
+      <div className="border-b-2 pb-3 border-gray-300 border- w-full ">
         <div className="flex gap-3">
           <Image
             width={80}

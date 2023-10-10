@@ -26,7 +26,9 @@ export const SearchBar = ({
   const router = useRouter();
 
   return (
-    <div className="h-full flex gap-2 items-center  relative overflow-visible ">
+    <div
+      className={`${inputClass} h-full flex gap-2 items-center relative overflow-visible `}
+    >
       {!noIcon && (
         <div className="text-[#225c8b] ">
           <AiOutlineSearch size={40} />
@@ -34,7 +36,7 @@ export const SearchBar = ({
       )}
 
       <input
-        className={` !${inputClass} outline-none border-2 rounded-lg hover:shadow focus:shadow border-gray-200 h-full  p-3 bg-inherit text-2xl `}
+        className={` w-[90%] outline-none border-2 rounded-lg hover:shadow focus:shadow border-gray-200 h-full  p-3 bg-inherit text-2xl `}
         value={input}
         onFocus={() => setIsFocused(true)}
         onChange={(e) => handleChange(e.target.value)}

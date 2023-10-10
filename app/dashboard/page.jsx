@@ -25,9 +25,9 @@ export default function Home() {
   const Sections = ({ name, icon }) => {
     return (
       <button
-        className={` px-2 text-2xl flex gap-3 ${
+        className={` px-1 text-lg flex gap-2 ${
           section === name
-            ? 'border-b-4 py-2 mb-3 font-semibold border-b-sky-700'
+            ? 'border-b-4 py-1 mb-2 font-medium border-b-sky-700'
             : ''
         }`}
         onClick={() => setSection(name)}
@@ -46,7 +46,7 @@ export default function Home() {
       <div className="flex">
         <div className=" flex-grow p-5">
           <div className=" ">
-            <div className="w-fit mx-auto flex gap-10">
+            <div className="w-fit mx-auto flex gap-3">
               <Sections icon={<GrHomeRounded size={30} />} name={'My Day'} />
               <Sections icon={<TbCalendarDue size={30} />} name={'Due'} />
               <Sections icon={<BsCalendar2Check size={30} />} name={'In'} />

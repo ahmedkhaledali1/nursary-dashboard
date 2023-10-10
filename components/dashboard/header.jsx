@@ -9,20 +9,22 @@ function Header() {
     useContext(ModalContext);
   console.log(childrens.map((child) => child.name));
   return (
-    <div className="w-full h-[7rem] pl-20 border-b-2 border-gray-200 flex justify-between items-center">
+    <div className="w-full h-[5rem] p-4  border-b-2 border-gray-200 flex justify-between items-center">
       <div className="flex gap-2  items-center">
         <div className="w-[4rem] rounded-full boder-[#022542]  h-[4rem] border-4 bg-gray-600 flex items-center justify-center ">
           TF
         </div>
-        <h2 className="text-[#01233f] font-semibold text-xl">tfo</h2>
+        <h2 className="text-[#01233f] font-semibold text-xl">
+          كيدزولوجي Kidsology Nursery
+        </h2>
+      </div>
+      <div className="h-10 w-[80px]">
+        <SearchBar
+          searchingArray={childrens.map((child) => child.name)}
+          inputClass={'w-[300px]'}
+        />
       </div>
       <div className="flex gap-6 text-[#225c8b] ">
-        <div className="h-10">
-          <SearchBar
-            searchingArray={childrens.map((child) => child.name)}
-            inputClass={'w-[200px]'}
-          />
-        </div>
         <div className="h-10 hover:text-cyan-400">
           <AiOutlineFilter size={40} />
         </div>

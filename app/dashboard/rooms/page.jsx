@@ -10,38 +10,7 @@ import ChildrenRoom from '@/components/rooms/children-room';
 import StaffRoom from '@/components/rooms/staff-room';
 function RoomsScreen() {
   const [selectedRoom, setSelectedRoom] = useState({});
-  // const rooms = [
-  //   {
-  //     name: 'New Room',
-  //     capacity: 20,
-  //     image: '/Sidebar/logo.png',
-  //     children: [
-  //       { name: 'body', image: '/Sidebar/logo.png' },
-  //       { name: 'mohamed', image: '/Sidebar/logo.png' },
-  //     ],
-  //     staff: [{ name: 'Tarek', image: '/Sidebar/logo.png' }],
-  //   },
-  //   {
-  //     name: 'Old Room',
-  //     capacity: 30,
-  //     image: '/Sidebar/logo.png',
-  //     children: [
-  //       { name: 'mohsen', image: '/Sidebar/logo.png' },
-  //       { name: 'said', image: '/Sidebar/logo.png' },
-  //     ],
-  //     staff: [{ name: 'Ahmed', image: '/Sidebar/logo.png' }],
-  //   },
-  // ];
-  // const staffs = [
-  //   { name: 'Ahmed', image: '/Sidebar/logo.png' },
-  //   { name: 'Tarek', image: '/Sidebar/logo.png' },
-  // ];
-  // const children = [
-  //   { name: 'body', image: '/Sidebar/logo.png' },
-  //   { name: 'mohamed', image: '/Sidebar/logo.png' },
-  //   { name: 'mohsen', image: '/Sidebar/logo.png' },
-  //   { name: 'said', image: '/Sidebar/logo.png' },
-  // ];
+
   const { isOpen, openModal, closeModal, childrens, staffs, rooms } =
     useContext(ModalContext);
 
@@ -53,9 +22,9 @@ function RoomsScreen() {
   const [selectedsection, setSelectedSection] = useState('profile');
 
   return (
-    <div className="w-full flex  h-screen">
-      <div className="w-[30%] border-r p-10">
-        <div className="flex items-start pl-10 text-[#01233f] text-lg gap-3 border-b h-[4rem]">
+    <div className="w-full flex  h-screen ">
+      <div className="w-[30%] border-r h-screen overflow-y-auto  ">
+        <div className="flex font-medium  text-[#01233f] text-xl gap-3 p-6 border-b items-center h-[5rem]">
           <button onClick={handleOpenModal}>
             <AiOutlinePlus size={35} />
           </button>
@@ -66,7 +35,7 @@ function RoomsScreen() {
           <div className="h-[3rem]">
             <SearchBar
               setSelectedRoom={setSelectedRoom}
-              inputClass={' w-[350px]'}
+              inputClass={' w-[90%]'}
               searchingArray={rooms.map((room) => room.name)}
             />
           </div>
@@ -101,7 +70,7 @@ function RoomsScreen() {
           </div>
         ))}
       </div>
-      <div className="w-[70%]">
+      <div className="w-[70%] h-screen overflow-y-auto">
         {!selectedRoom.name ? (
           <div className="w-full  h-full flex justify-center items-center text-center font-semibold text-xl text-gray-500">
             No room selected

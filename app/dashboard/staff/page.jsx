@@ -10,6 +10,7 @@ import ChildrenRoom from '@/components/rooms/children-room';
 import StaffRoom from '@/components/rooms/staff-room';
 import ProfileStaff from '@/components/staff/profile-staff';
 import AddStaffModel from '@/components/staff/add-staff-model';
+import StaffFeed from '@/components/staff/staff-feed';
 function StaffScreen() {
   const [selectedStaff, setselectedStaff] = useState({});
   const { isOpen, openModal, closeModal, childrens, staffs, rooms } =
@@ -26,19 +27,19 @@ function StaffScreen() {
   console.log(childrens);
   return (
     <div className="w-full flex  h-screen">
-      <div className="w-[30%] border-r p-10">
-        <div className="flex items-start pl-10 text-[#01233f] text-lg gap-3 border-b h-[4rem]">
+      <div className="w-[25%] border-r  ">
+        <div className="flex items-center p-5 text-[#01233f] text-xl font-medium gap-3 border-b h-[4rem]">
           <button onClick={handleOpenModal}>
             <AiOutlinePlus size={35} />
           </button>
 
           <div>Add Staff</div>
         </div>
-        <div className="h-[7rem] border-b flex justify-center items-center w-full">
-          <div className="h-[3rem]">
+        <div className="h-[6rem] border-b flex justify-center items-center w-full">
+          <div className="h-[2.5rem]">
             <SearchBar
               setselectedStaff={setselectedStaff}
-              inputClass={' w-[350px]'}
+              inputClass={'w-[90%]'}
               searchingArray={staffs.map((staff) => staff.name)}
             />
           </div>
@@ -74,7 +75,7 @@ function StaffScreen() {
           </div>
         ))}
       </div>
-      <div className="w-[70%]">
+      <div className="w-[75%] h-screen overflow-y-auto">
         {!selectedStaff.name ? (
           <div className="w-full  h-full flex justify-center items-center text-center font-semibold text-xl text-gray-500">
             No Staff selected
@@ -112,6 +113,16 @@ function StaffScreen() {
                   >
                     profile
                   </button>
+                  <button
+                    onClick={() => setSelectedSection('feed')}
+                    className={` px-2  ${
+                      selectedsection === 'feed'
+                        ? 'border-b-4 py-2 font-semibold border-b-sky-700'
+                        : ''
+                    }`}
+                  >
+                    Feed
+                  </button>
                 </div>
               </div>
             </div>
@@ -123,6 +134,7 @@ function StaffScreen() {
                   selectedStaff={selectedStaff}
                 />
               )}
+              {selectedsection === 'feed' && <StaffFeed />}
             </div>
           </div>
         )}
