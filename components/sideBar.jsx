@@ -133,11 +133,11 @@ function Sidebar({ handleShows }) {
               content={'Activity'}
               routerButton={'/dashboard/activity'}
             />
-            <SideButton
+            {/* <SideButton
               icon={<BiMessageAltDetail />}
               content={'Messages'}
               routerButton={'/dashboard/message'}
-            />
+            /> */}
             <SideButton
               icon={<HiOutlineDocumentReport />}
               content={'Reports'}
