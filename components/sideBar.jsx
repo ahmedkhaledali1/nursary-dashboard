@@ -24,11 +24,13 @@ const SideButton = ({ content, routerButton, child, father, show, icon }) => {
   const router = useRouter();
   const pathname = usePathname();
   const handleClick = () => {
-    router.push(routerButton);
+    if (!father) {
+      router.push(routerButton);
+    }
   };
   return (
-    <Link
-      href={routerButton}
+    <button
+      onClick={handleClick}
       className={`
       ${pathname === routerButton ? 'hover:text-white hover:bg-[#01233f]' : ''}
       ${child && 'pl-12'}
@@ -42,7 +44,7 @@ const SideButton = ({ content, routerButton, child, father, show, icon }) => {
           {!show && <MdOutlineKeyboardArrowDown size={30} />}
         </span>
       )}
-    </Link>
+    </button>
   );
 };
 
@@ -104,7 +106,6 @@ function Sidebar({ handleShows }) {
                   father
                   icon={<MdOutlineViewList />}
                   content={'Bookings'}
-                  routerButton={'/dashboard'}
                 />
               </div>
               {showRooms && (
@@ -112,12 +113,12 @@ function Sidebar({ handleShows }) {
                   <SideButton
                     child
                     content={'Invoicing'}
-                    routerButton={'/dashboard'}
+                    routerButton={'/dashboard/booking/invoicing'}
                   />
                   <SideButton
                     child
                     content={'Settings'}
-                    routerButton={'/dashboard'}
+                    routerButton={'/dashboard/booking/settings/session'}
                   />
                 </div>
               )}
