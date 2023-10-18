@@ -1,8 +1,8 @@
 'use client';
-import { SearchBar } from '@/components/dashboard/search';
+import { SearchBar } from '@/components/rooms/search';
 import ProFileRoom from '@/components/rooms/profile-room';
 import Image from 'next/image';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
 import AddChildModel from '@/components/children/add-child-model';
 import ModalContext from '@/context/ModelContext';
@@ -11,6 +11,7 @@ import StaffRoom from '@/components/rooms/staff-room';
 import ProfileStaff from '@/components/staff/profile-staff';
 import AddStaffModel from '@/components/staff/add-staff-model';
 import StaffFeed from '@/components/staff/staff-feed';
+import { Dna } from 'react-loader-spinner';
 function StaffScreen() {
   const [selectedStaff, setselectedStaff] = useState({});
   const { isOpen, openModal, closeModal, childrens, staffs, rooms } =
@@ -24,7 +25,32 @@ function StaffScreen() {
   };
 
   const [selectedsection, setSelectedSection] = useState('profile');
-  console.log(childrens);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (document.readyState === 'complete') {
+      setIsLoading(false);
+    } else {
+      window.onload = () => {
+        setIsLoading(false);
+      };
+    }
+  }, []);
+
+  if (isLoading == true) {
+    return (
+      <div className="w-full h-screen flex items-center  justify-center text-center">
+        <Dna
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="dna-loading"
+          wrapperStyle={{}}
+          wrapperClass="dna-wrapper"
+        />
+      </div>
+    );
+  }
   return (
     <div className="w-full flex  h-screen">
       <div className="w-[25%] border-r  ">

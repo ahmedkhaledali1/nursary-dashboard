@@ -32,18 +32,20 @@ const SideButton = ({ content, routerButton, child, father, show, icon }) => {
     <button
       onClick={handleClick}
       className={`
-      ${pathname === routerButton ? 'hover:text-white hover:bg-[#01233f]' : ''}
-      ${child && 'pl-12'}
-      w-full text-xl font-medium h-[3.3rem] items-center flex text-start justify-start hover:text-white hover:bg-[#01233f] px-7 py-2 `}
+      ${pathname === routerButton ? 'text-white bg-[#11131d] ' : ''}
+      ${child && 'px-3'}
+      w-full  h-[3.3rem] pl-2 z-10 hover:text-white hover:bg-[#11131d] items-center flex text-start justify-start gap-2  py-2 `}
     >
-      <span className="pr-2">{icon}</span>
-      <span>{content}</span>
-      {father && (
-        <span className="ml-2 text-center">
-          {show && <MdOutlineKeyboardArrowUp size={30} />}
-          {!show && <MdOutlineKeyboardArrowDown size={30} />}
-        </span>
-      )}
+      <span className="">{icon}</span>
+      <div className="flex gap-1">
+        <span>{content}</span>
+        {father && (
+          <span className="text-center">
+            {show && <MdOutlineKeyboardArrowUp size={20} />}
+            {!show && <MdOutlineKeyboardArrowDown size={20} />}
+          </span>
+        )}
+      </div>
     </button>
   );
 };
@@ -62,10 +64,9 @@ function Sidebar({ handleShows }) {
     // signOut();
   }
   return (
-    <>
+    <div className="h-screen blue-bg w-[9rem] text-sm font-extrabold">
       <div
-        className={`flex flex-col  w-[13rem] overflow-y-auto scroll-smooth  h-screen 
-        blue-bg text-gray-200 font-medium sidetable z-40
+        className={`flex flex-col relative buttonbg text-gray-400 overflow-y-auto scroll-smooth h-[80vh]  
                `}
       >
         <div className={`flex flex-col w-full  `}>
@@ -86,30 +87,29 @@ function Sidebar({ handleShows }) {
               <BsReverseListColumnsReverse size={40} />
             </div>
           </div> */}
-          <div className="w-full flex items-center gap-4 px-2 mt-3 my-2">
-            <div className="w-[4rem] rounded-full boder-[#022542]  h-[4rem] border-4 bg-gray-600 flex items-center justify-center ">
-              TF
-            </div>
-            <h2 className="text-white">Tarek Fouad</h2>
+          <div className="w-full flex items-center gap-4">
+            <Image src={'/site-logo.png'} width={130} height={80} alt="logo" />
           </div>
 
-          <div className="w-full  flex flex-col my-4 text-sm font-medium ">
+          <div className="w-full  flex flex-col my-4">
             <SideButton
               content={'Home'}
               routerButton={'/dashboard'}
-              icon={<AiOutlineHome />}
+              icon={<AiOutlineHome size={22} />}
             />
             <div className="w-full">
               <div className="w-full" onClick={handleShow}>
                 <SideButton
                   show={showRooms}
                   father
-                  icon={<MdOutlineViewList />}
+                  icon={<MdOutlineViewList size={22} />}
                   content={'Bookings'}
                 />
               </div>
               {showRooms && (
-                <div className="">
+                <div
+                  className={`transition-all duration-[4s] ease-in-out transform scale-y-100 $`}
+                >
                   <SideButton
                     child
                     content={'Invoicing'}
@@ -125,11 +125,11 @@ function Sidebar({ handleShows }) {
             </div>
             <SideButton
               content={'Feed'}
-              icon={<MdOutlineDynamicFeed />}
+              icon={<MdOutlineDynamicFeed size={22} />}
               routerButton={'/dashboard/feed'}
             />
             <SideButton
-              icon={<BsActivity />}
+              icon={<BsActivity size={22} />}
               content={'Activity'}
               routerButton={'/dashboard/activity'}
             />
@@ -139,35 +139,40 @@ function Sidebar({ handleShows }) {
               routerButton={'/dashboard/message'}
             /> */}
             <SideButton
-              icon={<HiOutlineDocumentReport />}
+              icon={<HiOutlineDocumentReport size={22} />}
               content={'Reports'}
-              routerButton={'/dashboard'}
+              routerButton={'/dashboard/reports'}
             />
-            <h3 className="text-lg text-gray-400 w-full px-5">Manage</h3>
+            <h3 className=" text-gray-400 w-full px-5">Manage</h3>
             <SideButton
-              icon={<SiGoogleclassroom />}
+              icon={<SiGoogleclassroom size={22} />}
               content={'Room'}
               routerButton={'/dashboard/rooms'}
             />
             <SideButton
-              icon={<FaChildReaching />}
+              icon={<FaChildReaching size={22} />}
               content={'Children'}
               routerButton={'/dashboard/children'}
             />
             <SideButton
-              icon={<BsMicrosoftTeams />}
+              icon={<BsMicrosoftTeams size={22} />}
               content={'Staff'}
               routerButton={'/dashboard/staff'}
             />
             <SideButton
-              icon={<AiOutlineSetting />}
-              content={'Sttings'}
-              routerButton={'/dashboard'}
+              icon={<AiOutlineSetting size={22} />}
+              content={'Settings'}
+              routerButton={'/dashboard/setting'}
             />
           </div>
         </div>
       </div>
-    </>
+      <div className="w-full flex items-center justify-center gap-4 px-1 h-[20vh] ">
+        <div className="w-[4rem] profile  rounded-full  font-medium h-[4rem]  bg-gray-600 flex items-center justify-center ">
+          TF
+        </div>
+      </div>
+    </div>
   );
 }
 

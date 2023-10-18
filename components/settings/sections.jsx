@@ -6,10 +6,10 @@ const Sections = ({ name }) => {
   return (
     <Link
       href={`/dashboard/booking/settings/${name}`}
-      className={` px-1 text-2xl flex gap-2 ${
+      className={`flex gap-2  px-10 py-3 text-xl border-b-[4px] active:opacity-20 transition-opacity duration-[.25s] font-medium items-center   ${
         pathname.includes(name)
-          ? 'border-b-4 py-1 mb-2 font-medium border-b-sky-700'
-          : ''
+          ? 'bg-[#12aed280] border-[#12aed2]'
+          : 'bg-[#f1f3f8]'
       }`}
     >
       {name}

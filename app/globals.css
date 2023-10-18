@@ -7,22 +7,55 @@
 }
 
 .blue-bg {
-  background-color: #225c8b;
+  background-color: #25293f;
+}
+.buttonbg {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.trans {
+  transition-duration: 0.25s;
+  touch-action: manipulation;
+  user-select: none;
+  transition-property: opacity;
+}
+.profile {
+  box-shadow: rgba(0, 0, 0, 0.6) -3px 8px 10px;
+  touch-action: manipulation;
+  cursor: pointer;
+  border-width: 5px;
+  border-color: #3a5e6d;
+  background-color: rgb(217, 221, 228);
+}
+.profileh {
+  touch-action: manipulation;
+  cursor: pointer;
+
+  background-color: rgb(217, 221, 228);
 }
 .modal-enter {
+  transform: translateY(-100%);
   opacity: 0;
-  transition: opacity 300ms ease-in-out;
 }
 
 .modal-enter-active {
+  transform: translateY(0);
   opacity: 1;
+  transition: opacity 3000ms, transform 3000ms;
 }
 
 .modal-exit {
+  transform: translateY(0);
   opacity: 1;
-  transition: opacity 300ms ease-in-out;
 }
 
 .modal-exit-active {
+  transform: translateY(-100%);
   opacity: 0;
+  transition: opacity 3000ms, transform 3000ms;
 }
+/* input[type='checkbox'] {
+  background: #3affde;
+} */
+/* .cb1 {
+  accent-color: #00ffff;
+} */

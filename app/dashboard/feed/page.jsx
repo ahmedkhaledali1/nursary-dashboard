@@ -3,8 +3,9 @@ import Activities from '@/components/feed/activities';
 import Activity from '@/components/feed/feed';
 import FilterFeed from '@/components/feed/feed';
 import ModalContext from '@/context/ModelContext';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { BsActivity, BsFilter } from 'react-icons/bs';
+import { Dna } from 'react-loader-spinner';
 
 function Feed() {
   const { openModal } = useContext(ModalContext);
@@ -16,6 +17,33 @@ function Feed() {
     e.preventDefault();
     openModal(<Activities />);
   };
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (document.readyState === 'complete') {
+      setIsLoading(false);
+    } else {
+      window.onload = () => {
+        setIsLoading(false);
+      };
+    }
+  }, []);
+
+  if (isLoading == true) {
+    return (
+      <div className="w-full h-screen flex items-center  justify-center text-center">
+        <Dna
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="dna-loading"
+          wrapperStyle={{}}
+          wrapperClass="dna-wrapper"
+        />
+      </div>
+    );
+  }
   return (
     <div className="w-full h-screen flex flex-col text-[#01233f]">
       <div className="flex justify-between items-center w-full p-3 h-[7rem] pl-20 border-b-2 border-gray-200">
@@ -23,14 +51,14 @@ function Feed() {
         <div className="flex gap-3 mr-8">
           <button
             onClick={handleOpenModal}
-            className="bg-[#225c8b] flex gap-2 rounded-xl text-white p-4 "
+            className="bg-[#225c8b] flex gap-2 rounded-xl text-white p-4 hover:opacity-50"
           >
             <BsFilter size={25} />
             <span>Fillter</span>
           </button>
           <button
             onClick={handleOpenActivityModal}
-            className="bg-[#225c8b] flex gap-2 rounded-xl text-white p-4 "
+            className="bg-[#225c8b] flex gap-2 rounded-xl text-white p-4 hover:opacity-50"
           >
             <BsActivity size={25} />
             <span> New Activity</span>

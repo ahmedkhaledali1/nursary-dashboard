@@ -34,7 +34,7 @@ function ProFileRoom({ selectedRoom, childrens, staffs }) {
   console.log(childrens);
   return (
     <div className="p-6 text-[#01233f]">
-      <div className="h-[70vh] w-[30rem] border rounded-xl p-4">
+      <div className="h-fit w-[30rem] border  rounded-xl p-4">
         <h1 className="font-semibold text-xl"> Room Details</h1>
         <form className="p-3 flex flex-col gap-5">
           <div className="flex gap-5">

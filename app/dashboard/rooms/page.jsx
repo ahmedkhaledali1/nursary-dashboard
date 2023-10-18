@@ -1,13 +1,14 @@
 'use client';
-import { SearchBar } from '@/components/dashboard/search';
+import { SearchBar } from '@/components/rooms/search';
 import ProFileRoom from '@/components/rooms/profile-room';
 import Image from 'next/image';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
 import AddRoomModel from '@/components/rooms/add-room-model';
 import ModalContext from '@/context/ModelContext';
 import ChildrenRoom from '@/components/rooms/children-room';
 import StaffRoom from '@/components/rooms/staff-room';
+import { Dna } from 'react-loader-spinner';
 function RoomsScreen() {
   const [selectedRoom, setSelectedRoom] = useState({});
 
@@ -20,10 +21,35 @@ function RoomsScreen() {
   };
 
   const [selectedsection, setSelectedSection] = useState('profile');
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    if (document.readyState === 'complete') {
+      setIsLoading(false);
+    } else {
+      window.onload = () => {
+        setIsLoading(false);
+      };
+    }
+  }, []);
+
+  if (isLoading == true) {
+    return (
+      <div className="w-full h-screen flex items-center  justify-center text-center">
+        <Dna
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="dna-loading"
+          wrapperStyle={{}}
+          wrapperClass="dna-wrapper"
+        />
+      </div>
+    );
+  }
   return (
     <div className="w-full flex  h-screen ">
-      <div className="w-[30%] border-r h-screen overflow-y-auto  ">
+      <div className="w-[25%] border-r h-screen overflow-y-auto  ">
         <div className="flex font-medium  text-[#01233f] text-xl gap-3 p-6 border-b items-center h-[5rem]">
           <button onClick={handleOpenModal}>
             <AiOutlinePlus size={35} />
@@ -70,7 +96,7 @@ function RoomsScreen() {
           </div>
         ))}
       </div>
-      <div className="w-[70%] h-screen overflow-y-auto">
+      <div className="w-[75%] h-screen overflow-y-auto">
         {!selectedRoom.name ? (
           <div className="w-full  h-full flex justify-center items-center text-center font-semibold text-xl text-gray-500">
             No room selected

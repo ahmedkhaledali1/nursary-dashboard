@@ -1,18 +1,11 @@
 'use client';
-
 import AddFundingModel from '@/components/settings/add-funding-model';
 import EditFundingModel from '@/components/settings/edit-funding-model';
-
 import ModalContext from '@/context/ModelContext';
 import React, { useContext, useEffect, useState } from 'react';
-import {
-  AiOutlineClose,
-  AiOutlineEdit,
-  AiOutlinePlus,
-  AiOutlineSearch,
-} from 'react-icons/ai';
+import { AiOutlineEdit, AiOutlinePlus, AiOutlineSearch } from 'react-icons/ai';
 import { RiDeleteBin5Line } from 'react-icons/ri';
-import { TbRadioactive, TbRadioactiveOff } from 'react-icons/tb';
+import { Rings } from 'react-loader-spinner';
 
 function Extras() {
   const [funding, setFunding] = useState([
@@ -51,8 +44,6 @@ function Extras() {
       />
     );
   };
-
-  useEffect(() => {}, [funding]);
 
   return (
     <div className="p-6 text-[#01233f] flex gap-4">

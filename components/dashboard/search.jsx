@@ -4,7 +4,6 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
-
 export const SearchBar = ({
   noIcon,
   inputClass,
@@ -27,10 +26,10 @@ export const SearchBar = ({
 
   return (
     <div
-      className={`${inputClass} h-full flex gap-2 items-center relative overflow-visible `}
+      className={`${inputClass} h-full  flex gap-2 items-center relative overflow-visible `}
     >
       {!noIcon && (
-        <div className="text-[#225c8b] ">
+        <div className="text-cyan-400 ">
           <AiOutlineSearch size={40} />
         </div>
       )}

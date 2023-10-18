@@ -5,7 +5,13 @@ import Sidebar from '@/components/sideBar';
 import ModalContext from '@/context/ModelContext';
 import Image from 'next/image';
 import { useContext, useState } from 'react';
-import { AiOutlineArrowRight, AiOutlineEdit } from 'react-icons/ai';
+import {
+  AiOutlineArrowRight,
+  AiOutlineCheckCircle,
+  AiOutlineEdit,
+  AiOutlineHome,
+  AiOutlineUnorderedList,
+} from 'react-icons/ai';
 import { BsCalendar2Check } from 'react-icons/bs';
 import { GrHomeRounded } from 'react-icons/gr';
 import { TbCalendarDue } from 'react-icons/tb';
@@ -22,49 +28,99 @@ export default function Home() {
 
   const [section, setSection] = useState('My Day');
 
-  const Sections = ({ name, icon }) => {
+  const Sections = ({ name, icon, end, className, bgActive }) => {
     return (
       <button
-        className={` px-1 text-lg flex gap-2 ${
-          section === name
-            ? 'border-b-4 py-1 mb-2 font-medium border-b-sky-700'
-            : ''
+        className={`flex gap-2  border-b-[4px]   ${className} active:opacity-20 transition-opacity duration-[.25s] font-medium items-center  px-3 py-1 ${
+          section === name ? `${bgActive}` : 'bg-[#f1f3f8]'
         }`}
         onClick={() => setSection(name)}
       >
         <span>{icon}</span>
         <span>{name}</span>
+        <div className="text-2xl font-bold">
+          0{end && <span className="opacity-50">/0</span>}
+        </div>
       </button>
     );
   };
 
+  const [selectedCards, setSelectedCards] = useState([]);
+  console.log(selectedCards);
+  const handleToggle = (id) => {
+    setSelectedCards((prevState) => {
+      if (prevState.includes(id)) {
+        return prevState.filter((cardId) => cardId !== id);
+      } else {
+        return [...prevState, id];
+      }
+    });
+  };
+  const checkAll = () => {
+    setSelectedCards(childrens);
+  };
+
   return (
-    <div className="pt-4 ">
-      <div className="  ">
+    <div className="">
+      <div className="">
         <Header />
       </div>
-      <div className="flex">
+      <div className="flex text-[#01233f]">
         <div className=" flex-grow p-5">
-          <div className=" ">
-            <div className="w-fit mx-auto flex gap-3">
-              <Sections icon={<GrHomeRounded size={30} />} name={'My Day'} />
-              <Sections icon={<TbCalendarDue size={30} />} name={'Due'} />
-              <Sections icon={<BsCalendar2Check size={30} />} name={'In'} />
-              <Sections icon={<AiOutlineArrowRight size={30} />} name={'Out'} />
+          <div className="p-1 ">
+            <div className="w-full  flex justify-stretch gap-3 pt-4">
               <Sections
-                icon={<HiOutlineArchiveBoxXMark size={30} />}
+                icon={<AiOutlineHome size={20} />}
+                name={'My Day'}
+                end
+                className={'border-[#12aed2]'}
+                bgActive={'bg-[#12aed280]'}
+              />
+              <Sections
+                icon={<AiOutlineUnorderedList size={20} />}
+                name={'Due'}
+                className={'border-[#3a5e6d]'}
+                bgActive={'bg-[#d9dde4]'}
+              />
+              <Sections
+                icon={<AiOutlineCheckCircle size={20} />}
+                end
+                name={'In'}
+                className={'border-[#afdc5c]'}
+                bgActive={'bg-[#afdc5c80]'}
+              />
+              <Sections
+                icon={<AiOutlineArrowRight size={20} />}
+                name={'Out'}
+                className={'border-[#ff9f8a]'}
+                bgActive={'bg-[#ff9f8a80]'}
+              />
+              <Sections
+                icon={<HiOutlineArchiveBoxXMark size={20} />}
                 name={'Absent'}
+                className={'border-[#fff282]'}
+                bgActive={'bg-[#fff28280]'}
               />
             </div>
-            <div className="w-full mt-10 grid grid-cols-2 gap-6">
+            <div className="w-full mt-5 grid grid-cols-2 gap-3">
               {childrens.map((child) => (
-                <Card key={child.name} name={child.name} />
+                <Card
+                  selectedCards={selectedCards}
+                  key={child.name}
+                  name={child.name}
+                  child={child}
+                  onToggle={handleToggle}
+                />
               ))}
             </div>
           </div>
         </div>
         <div className="w-[20rem]">
-          <Actions />
+          <Actions
+            checkAll={checkAll}
+            selectedChildren={selectedCards}
+            childrens={childrens}
+          />
         </div>
       </div>
     </div>
