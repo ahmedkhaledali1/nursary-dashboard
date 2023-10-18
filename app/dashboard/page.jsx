@@ -102,17 +102,23 @@ export default function Home() {
                 bgActive={'bg-[#fff28280]'}
               />
             </div>
-            <div className="w-full mt-5 grid grid-cols-2 gap-3">
-              {childrens.map((child) => (
-                <Card
-                  selectedCards={selectedCards}
-                  key={child.name}
-                  name={child.name}
-                  child={child}
-                  onToggle={handleToggle}
-                />
-              ))}
-            </div>
+            {section == 'My Day' ? (
+              <div className="w-full mt-5 grid grid-cols-2 gap-3">
+                {childrens.map((child) => (
+                  <Card
+                    selectedCards={selectedCards}
+                    key={child.name}
+                    name={child.name}
+                    child={child}
+                    onToggle={handleToggle}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="w-full h-[50vh] flex justify-center items-center text-center font-bold text-gray-500">
+                <div>Nothing Yet</div>
+              </div>
+            )}
           </div>
         </div>
         <div className="w-[20rem]">
